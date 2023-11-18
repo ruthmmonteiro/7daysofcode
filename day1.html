@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    // Comparison between numeroUm and stringUm
+    let numeroUm = 1;
+    let stringUm = '1';
+
+    // Using loose equality (==) and strict inequality (!==) to compare values and types
+    if (numeroUm == stringUm && numeroUm !== stringUm) {
+        console.log('As variáveis numeroUm e stringUm têm o mesmo valor, mas tipos diferentes');
+    } else {
+        console.log('As variáveis numeroUm e stringUm não têm o mesmo valor');
+    }
+
+    // Comparison between numeroTrinta and stringTrinta
+    let numeroTrinta = 30;
+    let stringTrinta = '30';
+
+    // Using strict equality (===) to compare both value and type
+    if (numeroTrinta === stringTrinta) {
+        console.log('As variáveis numeroTrinta e stringTrinta têm o mesmo valor e mesmo tipo');
+    } else {
+        console.log('As variáveis numeroTrinta e stringTrinta não têm o mesmo tipo');
+    }
+
+    // Comparison between numeroDez and numeroVinte
+    let numeroDez = 10;
+    let numeroVinte = 20;
+
+    // Using loose inequality (!=) and typeof to compare values and ensure the same type
+    if (numeroDez != numeroVinte && typeof(numeroDez) === typeof(numeroVinte)) {
+        console.log('As variáveis numeroDez e numeroVinte têm o mesmo tipo, mas valores diferentes');
+    } else {
+        console.log('As variáveis numeroDez e numeroVinte não têm o mesmo valor');
+    }
+</script>
+
+</body>
+</html>

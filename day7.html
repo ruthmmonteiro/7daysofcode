@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; margin: 20px;">
+
+<form id="calculatorForm" style="max-width: 300px; margin: 0 auto; background-color: #f4f4f4; padding: 15px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <label for="value1" style="display: block; margin-bottom: 5px;">Valor 1:</label>
+    <input type="number" id="value1" name="value1" required style="width: 100%; padding: 8px; box-sizing: border-box; margin-bottom: 10px;">
+
+    <label for="operation" style="display: block; margin-bottom: 5px;">Escolha a operação:</label>
+    <select id="operation" name="operation" required style="width: 100%; padding: 8px; box-sizing: border-box; margin-bottom: 10px;">
+        <option value="soma">Soma</option>
+        <option value="subtracao">Subtração</option>
+        <option value="multiplicacao">Multiplicação</option>
+        <option value="divisao">Divisão</option>
+    </select>
+
+    <label for="value2" style="display: block; margin-bottom: 5px;">Valor 2:</label>
+    <input type="number" id="value2" name="value2" required style="width: 100%; padding: 8px; box-sizing: border-box; margin-bottom: 10px;">
+
+    <button type="button" onclick="calculate()" style="background-color: #4caf50; color: white; padding: 10px 15px; border: none; border-radius: 3px; cursor: pointer; margin-right: 5px;">Calcular</button>
+    <button type="button" onclick="clearForm()" style="background-color: #f44336; color: white; padding: 10px 15px; border: none; border-radius: 3px; cursor: pointer;">Limpar</button>
+</form>
+
+<div id="result" style="margin-top: 20px; font-weight: bold;"></div>
+
+<script>
+function calculate() {
+    let value1 = document.getElementById("value1").value;
+    let operation = document.getElementById("operation").value;
+    let value2 = document.getElementById("value2").value;
+
+    value1 = Number(value1);
+    value2 = Number(value2);
+
+    let result;
+
+    switch (operation) {
+        case 'soma':
+            result = value1 + value2;
+            break;
+        case 'subtracao':
+            result = value1 - value2;
+            break;
+        case 'multiplicacao':
+            result = value1 * value2;
+            break;
+        case 'divisao':
+            result = value1 / value2;
+            break;
+        default:
+            alert('Operação não reconhecida!');
+            return;
+    }
+
+    document.getElementById("result").innerHTML = `O resultado da ${operation} é ${result}`;
+}
+
+function clearForm() {
+    document.getElementById("calculatorForm").reset();
+    document.getElementById("result").innerHTML = '';
+}
+</script>
+
+</body>
+</html>

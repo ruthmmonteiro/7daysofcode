@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+</head>
+<body>
+    <h1>Lista de Compras</h1>
+
+    <form id="shoppingForm">
+        <label for="adicionar">Gostaria de adicionar um item à sua lista? Sim ou Não?</label>
+        <input type="text" id="adicionar" name="adicionar" required>
+        <br>
+
+        <label for="item">Qual item gostaria de adicionar?</label>
+        <input type="text" id="item" name="item" required>
+        <br>
+
+        <label for="categoria">Em qual categoria esse item se encaixa?</label>
+        <select id="categoria" name="categoria" required>
+            <option value="frutas">Frutas</option>
+            <option value="vegetais">Vegetais</option>
+            <option value="congelados">Congelados</option>
+            <option value="laticinios">Laticínios</option>
+            <option value="limpeza">Limpeza</option>
+            <option value="cereais">Cereais</option>
+            <option value="bebidas">Bebidas</option>
+        </select>
+        <br>
+
+        <button type="button" onclick="adicionarItem()">Adicionar Item</button>
+    </form>
+
+    <h2>Lista de Compras:</h2>
+    <ul id="listaCompras"></ul>
+
+    <script>
+        let listaCompras = {
+            frutas: [],
+            vegetais: [],
+            congelados: [],
+            laticinios: [],
+            limpeza: [],
+            cereais: [],
+            bebidas: []
+        };
+
+        function adicionarItem() {
+            const adicionar = document.getElementById('adicionar').value.toLowerCase();
+            const item = document.getElementById('item').value;
+            const categoria = document.getElementById('categoria').value;
+
+            if (adicionar === 'sim') {
+                listaCompras[categoria].push(item);
+                document.getElementById('shoppingForm').reset();
+                exibirListaCompras();
+            }
+        }
+
+        function exibirListaCompras() {
+            const listaComprasElement = document.getElementById('listaCompras');
+            listaComprasElement.innerHTML = '';
+
+            for (const categoria in listaCompras) {
+                const items = listaCompras[categoria];
+
+                if (items.length > 0) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${categoria}: ${items.join(', ')}`;
+                    listaComprasElement.appendChild(listItem);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

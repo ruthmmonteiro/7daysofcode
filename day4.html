@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let tentativa = null
+const valor = 7
+
+for(let numTentativa = 1; numTentativa < 4 && tentativa != valor ; numTentativa++) {
+    let tentativa = prompt(`Jogo da Adivinhação!! Digite um número de 0 a 10. Tentativa ${numTentativa} de 3.`)
+    if(tentativa == valor) {
+        alert(`Parabéns você acertou!!! o número correto é ${valor}!`)
+        numTentativa = 3
+    }
+    else if(numTentativa == 3 && tentativa != valor) {
+        alert(`Game Over!!! o número correto é ${valor}!`)
+    }
+}
+</script>
+</body>
+</html>

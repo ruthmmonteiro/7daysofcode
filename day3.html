@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Path Selection</title>
+</head>
+<body>
+    <script>
+        alert('==============================\n===========Olá seja bem Vindo ===========\n=======Qual área deseja estudar?======\n==============================');
+
+        let frontEnd = [];
+        let backEnd = [];
+
+        function showFrontEndOptions() {
+            alert('Front - End! Você poderá aprender React e/ou Vue!');
+            let continuarFront = prompt('1 - Continuar na formação Front - End!\n2 - Estudar Back - End e se tornar um Fullstack\n3 - Sair');
+
+            if (continuarFront == 1) {
+                alert('Você escolheu continuar a estudar Front - End!!');
+                collectTechnologies(frontEnd);
+            } else if (continuarFront == 2) {
+                alert('Você escolheu começar estudar Back - End e se tornar um Fullstack!!');
+            } else if (continuarFront == 3) {
+                alert('Sair. Obrigado!');
+            } else {
+                alert('Entre com um valor válido!');
+                showFrontEndOptions();
+            }
+        }
+
+        function showBackEndOptions() {
+            alert('Back - End! Você poderá aprender Python e/ou Java!');
+            let continuarBack = prompt('1 - Continuar na formação Back - End!\n2 - Estudar Front - End e se tornar um Fullstack\n3 - Sair');
+
+            if (continuarBack == 1) {
+                alert('Você escolheu continuar a estudar Back - End!!');
+                collectTechnologies(backEnd);
+            } else if (continuarBack == 2) {
+                alert('Você escolheu começar estudar Front - End e se tornar um Fullstack!!');
+            } else if (continuarBack == 3) {
+                alert('Sair. Obrigado!');
+            } else {
+                alert('Entre com um valor válido!');
+                showBackEndOptions();
+            }
+        }
+
+        function collectTechnologies(techArray) {
+            while (true) {
+                let technology = prompt('Entre com as outras tecnologias e/ou linguagens que você gostaria de aprender ou conhecer. Digite "sair" para encerrar.');
+                if (technology.toLowerCase() === 'sair') {
+                    alert(`Obrigado, aqui estão suas tecnologias e/ou linguagens que deseja estudar e/ou conhecer: ${techArray}`);
+                    break;
+                }
+                techArray.push(technology);
+            }
+        }
+
+        function main() {
+            let form = document.createElement('form');
+
+            let radioFrontEnd = document.createElement('input');
+            radioFrontEnd.type = 'radio';
+            radioFrontEnd.name = 'area';
+            radioFrontEnd.value = 'frontEnd';
+            radioFrontEnd.id = 'radioFrontEnd';
+
+            let labelFrontEnd = document.createElement('label');
+            labelFrontEnd.htmlFor = 'radioFrontEnd';
+            labelFrontEnd.appendChild(document.createTextNode('Front - End'));
+
+            let radioBackEnd = document.createElement('input');
+            radioBackEnd.type = 'radio';
+            radioBackEnd.name = 'area';
+            radioBackEnd.value = 'backEnd';
+            radioBackEnd.id = 'radioBackEnd';
+
+            let labelBackEnd = document.createElement('label');
+            labelBackEnd.htmlFor = 'radioBackEnd';
+            labelBackEnd.appendChild(document.createTextNode('Back - End'));
+
+            let radioNone = document.createElement('input');
+            radioNone.type = 'radio';
+            radioNone.name = 'area';
+            radioNone.value = 'none';
+            radioNone.id = 'radioNone';
+
+            let labelNone = document.createElement('label');
+            labelNone.htmlFor = 'radioNone';
+            labelNone.appendChild(document.createTextNode('Nenhuma das opções'));
+
+            let submitButton = document.createElement('input');
+            submitButton.type = 'button';
+            submitButton.value = 'Escolher';
+            submitButton.addEventListener('click', function () {
+                let selectedArea = document.querySelector('input[name="area"]:checked');
+
+                if (selectedArea) {
+                    if (selectedArea.value === 'frontEnd') {
+                        showFrontEndOptions();
+                    } else if (selectedArea.value === 'backEnd') {
+                        showBackEndOptions();
+                    } else {
+                        alert('Nenhuma das alternativas. Não pretendo estudar programação.');
+                    }
+                } else {
+                    alert('Por favor, selecione uma opção.');
+                }
+            });
+
+            form.appendChild(radioFrontEnd);
+            form.appendChild(labelFrontEnd);
+            form.appendChild(document.createElement('br'));
+
+            form.appendChild(radioBackEnd);
+            form.appendChild(labelBackEnd);
+            form.appendChild(document.createElement('br'));
+
+            form.appendChild(radioNone);
+            form.appendChild(labelNone);
+            form.appendChild(document.createElement('br'));
+
+            form.appendChild(submitButton);
+
+            document.body.appendChild(form);
+        }
+
+        main();
+    </script>
+</body>
+</html>
